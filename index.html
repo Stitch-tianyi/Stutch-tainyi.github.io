@@ -343,44 +343,18 @@
 
         // 保存宣传图片
         function savePromoImage () {
-            // 创建画布并绘制自定义内容
-            const canvas = document.createElement('canvas')
-            const ctx = canvas.getContext('2d')
-
-            // 设置画布大小
-            canvas.width = 300
-            canvas.height = 400
-
-            // 绘制背景
-            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height)
-            gradient.addColorStop(0, '#ff7b00')
-            gradient.addColorStop(1, '#ff5500')
-            ctx.fillStyle = gradient
-            ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-            // 绘制标题
-            ctx.fillStyle = 'white'
-            ctx.font = 'bold 28px Arial'
-            ctx.textAlign = 'center'
-            ctx.fillText('子夜归', canvas.width / 2, canvas.height / 2 - 20)
-
-            // 绘制副标题
-            ctx.font = '20px Arial'
-            ctx.fillText('38集全集完结版', canvas.width / 2, canvas.height / 2 + 20)
-
-            // 绘制底部文字
-            ctx.font = '16px Arial'
-            ctx.fillText('万部影视抢先版', canvas.width / 2, canvas.height - 30)
-
-            // 将画布内容转换为数据URL
-            const dataURL = canvas.toDataURL('image/jpeg')
-
-            // 创建一个虚拟链接进行下载
             const link = document.createElement('a')
-            link.href = dataURL
-            link.download = '子夜归宣传图.jpg'
+            // 设置a标签为不可见
+            link.style.display = 'none'
+            // 将a标签添加到body
             document.body.appendChild(link)
+            // 设置a标签的href
+            link.href = './img/img.jpg'
+            // 设置a标签的download
+            link.download = '宣传图片.jpg'
+            // 模拟点击事件进行下载
             link.click()
+            // 下载完成后移除a标签
             document.body.removeChild(link)
 
             // 显示提示
