@@ -1,0 +1,533 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  line-height: 1.6;
+  padding: 15px;
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  background: rgba(30, 30, 46, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+  backdrop-filter: blur(5px);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  color: #ff7b00;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 5px rgba(255, 123, 0, 0.4);
+}
+
+h2 {
+  font-size: 20px;
+  color: #ff7b00;
+  margin: 18px 0 12px;
+}
+
+h3 {
+  font-size: 18px;
+  color: #ff7b00;
+  margin: 15px 0 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #ffb700;
+  margin-bottom: 15px;
+}
+
+.stats {
+  background: rgba(255, 123, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: center;
+  font-size: 15px;
+}
+
+.highlight {
+  color: #ffb700;
+  font-weight: bold;
+}
+
+.steps {
+  margin: 20px 0;
+}
+
+.step {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid #ff7b00;
+  position: relative;
+}
+
+.step.locked {
+  opacity: 0.7;
+  border-left: 4px solid #666;
+}
+
+.step.locked::after {
+  content: '\f023';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #ff7b00;
+  font-size: 20px;
+}
+
+.step-number {
+  display: inline-block;
+  background: #ff7b00;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.step.locked .step-number {
+  background: #666;
+}
+
+.note {
+  background: rgba(0, 200, 220, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #00c8dc;
+}
+
+.warning {
+  background: rgba(255, 50, 50, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #ff3232;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(90deg, #ff7b00 0%, #ff5500 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 25px 0 15px;
+  box-shadow: 0 4px 10px rgba(255, 123, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 5px rgba(255, 123, 0, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(90deg, #3a3a5e 0%, #2a2a4e 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffb700;
+}
+
+.upload-area {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.upload-area.active {
+  border-color: #ff7b00;
+  background: rgba(255, 123, 0, 0.05);
+}
+
+.upload-icon {
+  font-size: 40px;
+  color: #ff7b00;
+  margin-bottom: 10px;
+}
+
+.upload-text {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.success-message {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 200, 80, 0.1);
+  border-radius: 10px;
+  margin: 20px 0;
+  border-left: 4px solid #00c850;
+}
+
+.success-icon {
+  font-size: 50px;
+  color: #00c850;
+  margin-bottom: 15px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #888;
+  font-size: 12px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* 进度条容器 */
+.progress-container {
+  margin: 0 0 20px 0;
+  padding: 15px;
+  background: rgba(30, 30, 46, 0.95);
+  border-radius: 0 0 12px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.progress-percent {
+  font-weight: bold;
+  color: #ff7b00;
+}
+
+.progress-large {
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-large-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #ff7b00 0%, #ff5500 100%);
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.progress-reward {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.progress-reward i {
+  color: #ffb700;
+  margin-right: 5px;
+}
+
+/* 进度条动画效果 */
+.progress-large-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
+  z-index: 1;
+  background-size: 20px 20px;
+  animation: move 1s linear infinite;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 上传图片预览 */
+.upload-preview {
+  display: none;
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 2px solid rgba(255, 123, 0, 0.5);
+}
+
+/* 文件输入 */
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* 宣传图片 */
+.promo-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin: 15px 0;
+  border: 2px solid rgba(255, 123, 0, 0.5);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 123, 0, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(255, 123, 0, 0.8);
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(255, 123, 0, 0.5);
+  }
+}
+
+.glow {
+  animation: glow 2s infinite;
+}
+
+/* 步骤完成动画 */
+.step-completed .step-number {
+  background: #00c850;
+  animation: pulse 1s;
+}
+
+.step-completed .step-title {
+  color: #00c850;
+}
+
+.step-completed {
+  border-left-color: #00c850;
+}
+
+/* 提示框 - 修复居中问题 */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px 25px;
+  border-radius: 12px;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  text-align: center;
+  min-width: 280px;
+  max-width: 90%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* 验证错误提示 */
+.validation-error {
+  color: #ff5252;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none;
+  text-align: center;
+}
+
+/* 图片预览容器 */
+.image-preview-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+/* 模态框 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 90%;
+  color: #333;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-btn.confirm {
+  background: #ff7b00;
+  color: white;
+}
+
+.modal-btn.cancel {
+  background: #e0e0e0;
+  color: #333;
+}
+
+/* 新添加的样式 */
+.step-status {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #ffb700;
+}
+
+.step-status i {
+  margin-right: 5px;
+}
+
+.step-status.completed {
+  color: #00c850;
+}
