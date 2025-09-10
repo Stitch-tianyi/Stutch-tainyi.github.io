@@ -37,6 +37,7 @@ h1 {
   color: #ff7b00;
   margin-bottom: 10px;
   text-shadow: 0 2px 5px rgba(255, 123, 0, 0.4);
+  text-align: center;
 }
 
 h2 {
@@ -49,6 +50,33 @@ h3 {
   font-size: 18px;
   color: #ff7b00;
   margin: 15px 0 10px;
+}
+
+/* 按钮浮动 */
+.drama-list {
+  list-style: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.drama-item {
+  margin: 20px 0;
+  transition: transform 0.3s;
+}
+
+.drama-item:hover {
+  transform: translateY(-5px);
+}
+
+.instruction {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #ffd8cb;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  animation: fadeIn 2s;
+  text-align: center;
 }
 
 .subtitle {
@@ -147,6 +175,7 @@ h3 {
   margin: 25px 0 15px;
   box-shadow: 0 4px 10px rgba(255, 123, 0, 0.3);
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btn:active {
@@ -157,6 +186,11 @@ h3 {
 .btn-secondary {
   background: linear-gradient(90deg, #3a3a5e 0%, #2a2a4e 100%);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary>a {
+  color: white;
+  text-decoration: none;
 }
 
 .btn:disabled {
@@ -352,6 +386,15 @@ footer {
   border: 2px solid rgba(255, 123, 0, 0.5);
 }
 
+/* 步骤图片 */
+.step-image {
+  width: 103%;
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 15px 0;
+  border: 2px solid rgba(255, 123, 0, 0.5);
+}
+
 /* 动画效果 */
 @keyframes fadeIn {
   from {
@@ -530,4 +573,29 @@ footer {
 
 .step-status.completed {
   color: #00c850;
+}
+
+/* 新增样式用于调整资源页面的布局 */
+#section2 .steps {
+  margin-bottom: 20px;
+}
+
+#section2 .step {
+  margin-bottom: 12px;
+  padding: 12px;
+}
+
+#section2 h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: #00c8dc;
+}
+
+#section2 .success-message p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+#section2 .success-message h2 {
+  margin-bottom: 15px;
 }

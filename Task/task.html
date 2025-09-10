@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>万部影视抢先版 - 今日访问量: 9999+</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+    <!-- 提示框 - 已修复居中问题 -->
+    <div class="toast" id="toast"></div>
+
+    <!-- 确认模态框 -->
+    <div class="modal" id="confirm-modal">
+        <div class="modal-content">
+            <h3>确认保存图片</h3>
+            <p>是否允许将宣传图片保存到您的相册？</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" id="modal-cancel">取消</button>
+                <button class="modal-btn confirm" id="modal-confirm">确认保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 首页内容 -->
+    <div class="container section active" id="section1">
+
+        <h1>归队全集完整版资源</h1>
+        <div class="image-preview-container">
+            <img src="" class="promo-image" />
+        </div>
+
+        <div class="stats">
+            <i class="fas fa-users"></i> 已有<span class="highlight">9999+</span>人次参与
+        </div>
+
+        <p>因为软件本身不需要付费也没有广告，所以请大家帮忙宣传下，设置了一点小任务防止同行捣乱</p>
+
+        <div class="note">
+            <i class="fas fa-info-circle"></i> 详细请看下面步骤
+        </div>
+
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>任务进度</span>
+                <span class="progress-percent" id="task-progress-percent">0%</span>
+            </div>
+            <div class="progress-large">
+                <div class="progress-large-inner" id="task-progress"></div>
+                <div class="progress-text" id="task-progress-text">0%</div>
+            </div>
+            <div class="progress-reward">
+                <i class="fas fa-gift"></i> 完成进度即可获取资源
+            </div>
+        </div>
+
+        <h2><i class="fas fa-tasks"></i> 任务步骤</h2>
+
+        <div class="steps">
+            <div class="step fade-in" id="step1">
+                <span class="step-number">1</span>
+                <span class="step-title">保存宣传图片</span>
+                <p>点击下面按钮自动保存宣传图片到相册</p>
+
+                <div class="image-preview-container">
+                    <!--
+                    ===============================================
+                    程序员注意：在这里替换宣传图片的URL
+                    将下面的URL替换为您自己的图片地址
+                    ===============================================
+                    -->
+                    <img src="" class="promo-image" id="save-image">
+                </div>
+
+                <button class="btn btn-secondary" id="save-image-btn">
+                    <i class="fas fa-download"></i> 自动保存宣传图片
+                </button>
+
+                <div class="step-status" id="step1-status">
+                    <i class="fas fa-clock"></i> 未完成
+                </div>
+            </div>
+
+            <div class="step fade-in locked" id="step2">
+                <span class="step-number">2</span>
+                <span class="step-title">平台评论任务</span>
+                <p>打开小红书、抖音或快手任意一个平台，搜索<strong id="search-title"></strong>相关的作品，找到最少3条，然后评论刚刚保存的图片并截图。</p>
+                <p>如图所示 ↓↓↓ </p>
+                <img src="img/shareImage.jpg" class="promo-image" />
+
+                <button class="btn btn-secondary" id="complete-step2-btn" disabled>
+                    <i class="fas fa-check"></i> 我已完成评论
+                </button>
+
+                <div class="step-status" id="step2-status">
+                    <i class="fas fa-lock"></i> 请先完成步骤1
+                </div>
+            </div>
+
+            <div class="step fade-in locked" id="step3">
+                <span class="step-number">3</span>
+                <span class="step-title">提交截图</span>
+                <p>把截图在下面提交，提交完以后，AI机器人会自动审核，审核成功就会自动跳转到领取页。</p>
+
+                <p class="validation-error" id="validation-error">请上传三张不同的截图！</p>
+
+                <div class="step-status" id="step3-status">
+                    <i class="fas fa-lock"></i> 请先完成步骤2
+                </div>
+
+                <h3><i class="fas fa-upload"></i> 提交截图</h3>
+
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label>1. 评论第一张截图这里提交</label>
+                        <div class="upload-area" id="upload-area-1">
+                            <input type="file" accept="image/*" class="file-input" id="file-input-1" disabled>
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="upload-text">请先完成步骤2解锁上传功能</div>
+                            <img class="upload-preview" id="preview-1">
+                            <div class="validation-error" id="error-1"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>2. 评论第二张截图这里提交</label>
+                        <div class="upload-area" id="upload-area-2">
+                            <input type="file" accept="image/*" class="file-input" id="file-input-2" disabled>
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="upload-text">请先完成步骤2解锁上传功能</div>
+                            <img class="upload-preview" id="preview-2">
+                            <div class="validation-error" id="error-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>3. 评论第三张截图这里提交</label>
+                        <div class="upload-area" id="upload-area-3">
+                            <input type="file" accept="image/*" class="file-input" id="file-input-3" disabled>
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="upload-text">请先完成步骤2解锁上传功能</div>
+                            <img class="upload-preview" id="preview-3">
+                            <div class="validation-error" id="error-3"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <button type="button" class="btn" id="submit-btn" disabled>
+                <i class="fas fa-paper-plane"></i> 提交审核
+            </button>
+        </div>
+
+        <button class="btn btn-secondary" id="back-to-home-btn">
+            <i class="fas fa-arrow-left"></i> 返回首页
+        </button>
+    </div>
+
+    <footer>
+        <p>© 2025 影视资源分享平台 - 仅供学习交流使用</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
