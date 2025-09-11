@@ -384,6 +384,8 @@ function getItemInfo () {
                 images[i].src = itemInfo.images[i]
             }
         }
+        document.querySelector('#core-title').innerHTML = itemInfo.title
+        document.querySelector('#search-title').innerHTML = `【${itemInfo.searchTitle}】`
     }
 }
 

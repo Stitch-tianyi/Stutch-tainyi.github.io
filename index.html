@@ -43,7 +43,7 @@
             li.className = 'drama-item'
             li.id = 'item' + dataList[index].id
             li.innerHTML = `
-                    <a href="#" class="btn glow" id="item${dataList[index].id}">${dataList[index].title}<span class="heart">❤️</span></a>
+                    <a href="#" class="btn glow" id="item${dataList[index].id}">${dataList[index].btnTitle}<span class="heart">❤️</span></a>
             `
 
             li.addEventListener('click', (e) => {
