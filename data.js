@@ -12,6 +12,13 @@ const dataList = [
     btnTitle: '电视剧02抢先看',
     searchTitle: '电视剧02完整版',
     images: ['img/image-2-1.jpg', 'img/image-2-2.jpg']
+  },
+  {
+    id: 3,
+    title: '电视剧03',
+    btnTitle: '电视剧03抢先看',
+    searchTitle: '电视剧03完整版',
+    images: ['img/image-2-1.jpg', 'img/image-2-2.jpg']
   }
 ]
 
