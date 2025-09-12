@@ -599,3 +599,150 @@ footer {
 #section2 .success-message h2 {
   margin-bottom: 15px;
 }
+
+
+/* 动态访问量效果 */
+/* 移动端动态访问量效果 - 蓝色主题 */
+.visit-counter {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #00c8dc;
+    text-shadow: 0 0 8px rgba(0, 200, 220, 0.5);
+    padding: 8px 16px;
+    background: rgba(30, 30, 46, 0.9);
+    border-radius: 20px;
+    display: inline-block;
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 200, 220, 0.3);
+    border: 1px solid rgba(0, 200, 220, 0.25);
+    animation: pulse-glow 3s infinite;
+    max-width: 90%;
+    text-align: center;
+}
+
+.visit-counter::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 200, 220, 0.08) 0%,
+        rgba(0, 200, 220, 0.2) 50%,
+        rgba(0, 200, 220, 0.08) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 4s infinite;
+    z-index: 0;
+}
+
+.visit-counter span {
+    position: relative;
+    z-index: 1;
+}
+
+.counter-number {
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+    background: linear-gradient(135deg, #00c8dc 0%, #008c9e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: count-up 3s ease-out forwards;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 8px rgba(0, 200, 220, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(0, 200, 220, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 8px rgba(0, 200, 220, 0.3);
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes count-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 移动端优化图标 */
+.eye-icon {
+    display: inline-block;
+    margin-right: 6px;
+    animation: eye-blink 4s infinite;
+    font-size: 0.9em;
+}
+
+@keyframes eye-blink {
+    0%, 95%, 100% {
+        transform: scale(1);
+        color: #00c8dc;
+    }
+    96%, 99% {
+        transform: scale(0.9);
+        color: #008c9e;
+    }
+}
+
+/* 优化触摸反馈 */
+.visit-counter {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease;
+}
+
+.visit-counter:active {
+    transform: scale(0.97);
+}
+
+/* 减少移动端性能消耗 */
+@media (prefers-reduced-motion: reduce) {
+    .visit-counter,
+    .visit-counter::before,
+    .counter-number,
+    .eye-icon {
+        animation: none;
+    }
+    
+    .visit-counter {
+        box-shadow: 0 0 8px rgba(0, 200, 220, 0.4);
+    }
+}
+
+/* 小屏幕设备进一步优化 */
+@media screen and (max-width: 360px) {
+    .visit-counter {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+    
+    .counter-number {
+        min-width: 60px;
+    }
+    
+    .eye-icon {
+        margin-right: 4px;
+    }
+}
